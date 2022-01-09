@@ -27,6 +27,7 @@ model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=['binary_accura
 
 # Chargement des données de la base
 data_dir = "D:\VOCdevkit\VOC2007"
+# Données d'entraîenement
 data_generator_train = PascalVOCDataGenerator('trainval', data_dir)
 
 batch_size = 32
@@ -47,6 +48,7 @@ for i in range(nb_batches):
     X_train[i * batch_size:(i + 1) * batch_size, :] = y_pred
     Y_train[i * batch_size:(i + 1) * batch_size, :] = y
 
+# Données test
 data_generator_test = PascalVOCDataGenerator('test', data_dir)
 generator = data_generator_test.flow(batch_size=batch_size)
 Nb_images = len(data_generator_test.images_ids_in_subset)
